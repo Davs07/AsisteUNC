@@ -1,0 +1,48 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Asistencia
+
+@{
+    ViewData["Title"] = "Crear Asistencia";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Crear Asistencia</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Index" class="btn btn-secondary">
+                Volver a la lista
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Crear">
+                        <div class="form-group mb-3">
+                            <label asp-for="RegistroId" class="form-label"></label>
+                            <select asp-for="RegistroId" class="form-control" asp-items="ViewBag.RegistroId"></select>
+                            <span asp-validation-for="RegistroId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="HoraEntrada" class="form-label"></label>
+                            <input asp-for="HoraEntrada" class="form-control" />
+                            <span asp-validation-for="HoraEntrada" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-end">
+                            <input type="submit" value="Crear" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

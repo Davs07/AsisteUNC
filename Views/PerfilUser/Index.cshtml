@@ -1,0 +1,16 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Usuario
+
+<!-- Views/PerfilUser/Index.cshtml -->
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-primary mb-4">Perfil de Usuario</h1>
+
+    <div class="bg-white shadow-md rounded p-4">
+        <p><span class="font-bold">Nombre:</span> @Model.Nombre</p>
+        <p><span class="font-bold">Apellido:</span> @Model.Apellido</p>
+        <p><span class="font-bold">Correo Electrónico:</span> @Model.CorreoElectronico</p>
+        <a href="@Url.Action("Editar", "PerfilUser")"
+           class="mt-4 inline-block bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded">
+            Editar Perfil
+        </a>
+    </div>
+</div>

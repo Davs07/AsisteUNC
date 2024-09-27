@@ -1,0 +1,28 @@
+﻿@using AsitenciaUNC_attemp_2.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Usuario> signInManager
+
+<ul class="flex space-x-4 text-lg text-primnary">
+	@if (signInManager.IsSignedIn(User))
+	{
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				@User.Identity!.Name!
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li>
+					<a class="dropdown-item" asp-action="CerrarSesion" asp-controller="Auth">
+						Cerrar Sesión
+					</a>
+				</li>
+			</ul>
+		</li>
+	}
+	else
+	{
+		<li><a class="btn" asp-area="" asp-controller="Auth" asp-action="InicioSesion">Iniciar Sesión</a></li>
+		<li><a class="btn bg-secondary hover:text-primary rounded-md py-2 px-4" asp-area="" asp-controller="Auth" asp-action="Registro">Registrarse</a></li>
+	}
+</ul>
+
+

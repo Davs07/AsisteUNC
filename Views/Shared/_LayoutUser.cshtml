@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - AsisteUNC</title>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+	<script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+	<!-- TailwindCSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Configuración de Tailwind -->
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						primary: "#0d42ff",
+						secondary: "#4eed05",
+					},
+				},
+			},
+		};
+	</script>
+	<style>
+		/* Custom minimalistic style */
+		body {
+			background-color: #fff;
+			font-family: 'Inter', sans-serif;
+			color: #333;
+		}
+
+		.navbar {
+			background-color: #fff;
+			border-bottom: 1px solid #eaeaea;
+		}
+
+			.navbar a {
+				color: #0d42ff;
+				text-decoration: none;
+			}
+
+		.footer {
+			background-color: #f9f9f9;
+			border-top: 1px solid #eaeaea;
+			text-align: center;
+			padding: 20px;
+		}
+
+		.btn-primary {
+			background-color: #0d42ff;
+			color: #fff;
+		}
+
+			.btn-primary:hover {
+				background-color: #0b36cc;
+			}
+
+	</style>
+</head>
+<body class="min-h-screen flex flex-col">
+	<!-- Container for the entire layout -->
+	<div class="flex min-h-screen">
+
+		<!-- Sidebar -->
+		<aside class="w-48 bg-white shadow-lg flex flex-col items-center py-6 space-y-8">
+			<div class="p-6 text-center">
+				@* <lord-icon src="https://cdn.lordicon.com/fttvwdlw.json"
+				trigger="loop"
+				stroke="light"
+				state="hover-roll"
+				colors="primary:#3080e8,secondary:#b4b4b4"
+				style="width:100px;height:100px">
+				</lord-icon> *@
+
+			</div>
+			<nav class="mt-10">
+				<a asp-action="Index" asp-controller="EventosUser" class="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white">Inicio</a>
+				<a asp-action="Eventos" asp-controller="EventosUser" class="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white">Mis Eventos</a>
+				<a asp-action="Crear" asp-controller="EventosUser" class="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white">Crear Evento</a>
+				<li class="flex items-center">
+					<a class="w-max gap-2 flex items-center h-max block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white">
+						<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><rect width="14" height="0" x="5" y="5" fill="currentColor"><animate fill="freeze" attributeName="height" begin="0.6s" dur="0.2s" values="0;3" /></rect><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="64" stroke-dashoffset="64" d="M12 4h7c0.55 0 1 0.45 1 1v14c0 0.55 -0.45 1 -1 1h-14c-0.55 0 -1 -0.45 -1 -1v-14c0 -0.55 0.45 -1 1 -1Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0" /></path><path stroke-dasharray="4" stroke-dashoffset="4" d="M7 4v-2M17 4v-2"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="4;0" /></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M7 11h10"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.8s" dur="0.2s" values="12;0" /></path><path stroke-dasharray="8" stroke-dashoffset="8" d="M7 15h7"><animate fill="freeze" attributeName="stroke-dashoffset" begin="1s" dur="0.2s" values="8;0" /></path></g></svg>
+						Calendario
+					</a>
+				</li>
+				<a asp-action="Index" asp-controller="PerfilUser" class="block py-2.5 px-4 rounded hover:bg-blue-700 hover:text-white">Perfil</a>
+			</nav>
+		</aside>
+
+		<!-- Main Content -->
+		<div class="flex-1 flex flex-col">
+
+			<!-- Top Bar -->
+			<header class="bg-white p-4 flex justify-between items-center shadow-lg">
+				<!-- Search bar -->
+				<div class="relative w-full max-w-md mx-auto">
+					<input type="text" placeholder="Buscar..." class="w-full border border-gray-300 rounded-full py-2 px-5 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-600 placeholder-gray-400">
+					<div class="absolute top-2 right-4">
+						<button class="text-purple-600 focus:outline-none">
+							<!-- Search Icon -->
+							<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a4 4 0 11-8 0 4 4 0 018 0zm0 0l4 4" />
+							</svg>
+						</button>
+					</div>
+				</div>
+
+				<!-- User Profile and Notifications -->
+				<div class="flex space-x-6 items-center">
+					<!-- Dark mode / light mode toggle -->
+					<button class="text-gray-600 hover:text-purple-500 transition-colors duration-200 ease-in-out focus:outline-none">
+						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10 2a8 8 0 018 8 8.001 8.001 0 01-12.875 6.532A7.978 7.978 0 0110 2zm0 18a9.978 9.978 0 01-7.45-3.293A10 10 0 1010 20z" />
+						</svg>
+					</button>
+
+					<!-- Notification Icon -->
+					<button class="relative text-gray-600 hover:text-purple-500 transition-colors duration-200 ease-in-out focus:outline-none">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M12 19a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2zM18.364 17.778A2 2 0 0 0 20 16V9a6 6 0 1 0-12 0v7a2 2 0 0 0 1.636 1.778M5 16v1a3 3 0 0 0 6 0v-1" />
+						</svg>
+						<!-- Notification dot -->
+						<span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+					</button>
+
+					<!-- Profile dropdown or login partial -->
+					<div class="flex items-center space-x-3">
+						<partial name="_LoginPartial" />
+					</div>
+				</div>
+			</header>
+
+			<!-- Main Content -->
+			<main class="flex-1 container mx-auto px-4 py-8">
+				@RenderBody()
+			</main>
+
+		</div>
+	</div>
+
+
+
+
+
+	@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

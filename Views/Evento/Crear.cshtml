@@ -1,0 +1,102 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Evento
+@{
+    ViewData["Title"] = "Crear";
+    var d = DateTime.Now;
+}
+
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div class="flex justify-between items-center pt-4">
+        <h2 class="text-2xl font-bold text-primary">Crear Evento</h2>
+        <a asp-action="Index" class="btn btn-secondary bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-700">
+            Volver a la lista
+        </a>
+    </div>
+    <br />
+    <div class="mt-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <form method="post" asp-action="Crear">
+                <div asp-validation-summary="ModelOnly" class="text-red-500 mb-3"></div>
+                <div class="mb-4">
+                    <label asp-for="Titulo" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="Titulo" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="Titulo" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Descripcion" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="Descripcion" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="Descripcion" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="FechaInicio" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="date" asp-for="FechaInicio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="FechaInicio" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="HoraInicio" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="time" asp-for="HoraInicio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="HoraInicio" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="FechaFinal" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="date" asp-for="FechaFinal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="FechaFinal" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="HoraFinal" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="time" asp-for="HoraFinal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="HoraFinal" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Ubicacion" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="Ubicacion" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="Ubicacion" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Capacidad" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="number" asp-for="Capacidad" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="0" />
+                    <span asp-validation-for="Capacidad" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Tipo" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="Tipo" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="Tipo" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="Modalidad" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="Modalidad" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="Modalidad" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="CreadoEn" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="date" asp-for="CreadoEn" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="CreadoEn" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="ActualizadoEn" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="datetime" asp-for="ActualizadoEn" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="@d" disabled />
+                    <span asp-validation-for="ActualizadoEn" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="IdOrganizador" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="IdOrganizador" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="0" />
+                    <span asp-validation-for="IdOrganizador" class="text-red-500"></span>
+                </div>
+                <div class="mb-4">
+                    <label asp-for="QRInvitacion" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="QRInvitacion" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                    <span asp-validation-for="QRInvitacion" class="text-red-500"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Crear Nueva</button>
+                    <a asp-controller="Evento" asp-action="Index" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

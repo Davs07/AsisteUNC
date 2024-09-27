@@ -1,0 +1,121 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Evento
+@using AsitenciaUNC_attemp_2.Models
+@using AsitenciaUNC_attemp_2.Enums
+
+@{
+    var modalidades = Enum.GetValues(typeof(ModalidadEnum)).Cast<ModalidadEnum>().Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString() }).ToList();
+    var tipos = Enum.GetValues(typeof(TipoEvento)).Cast<TipoEvento>().Select(t => new SelectListItem { Value = t.ToString(), Text = t.ToString() }).ToList();
+}
+
+<div class="container mx-auto py-8">
+    <h2 class="text-2xl font-bold text-blue-700 mb-6">Crear Nuevo Evento</h2>
+
+    <form asp-action="Crear" asp-controller="EventosUser" method="post" class="bg-white shadow-md rounded-lg p-6" id="formulario-evento">
+        <div asp-validation-summary="ModelOnly" class="text-red-500 mb-3"></div>
+
+        <!-- Barra de Progreso -->
+        <div class="flex justify-between mb-6">
+            <div class="text-center">
+                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mx-auto">1</div>
+                <span class="text-sm">Información General</span>
+            </div>
+            <div class="text-center">
+                <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-500 flex items-center justify-center mx-auto">2</div>
+                <span class="text-sm">Detalles del Evento</span>
+            </div>
+            <div class="text-center">
+                <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-500 flex items-center justify-center mx-auto">3</div>
+                <span class="text-sm">Ubicación y Capacidad</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Información General -->
+        <div class="step" id="step-1">
+            <div class="mb-4">
+                <label asp-for="Titulo" class="block text-sm font-medium text-gray-700"></label>
+                <input asp-for="Titulo" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="Titulo" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Descripcion" class="block text-sm font-medium text-gray-700"></label>
+                <input asp-for="Descripcion" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="Descripcion" class="text-red-500"></span>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700" onclick="nextStep(2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Detalles del Evento -->
+        <div class="step hidden" id="step-2">
+            <div class="mb-4">
+                <label asp-for="FechaInicio" class="block text-sm font-medium text-gray-700"></label>
+                <input type="date" asp-for="FechaInicio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="FechaInicio" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="HoraInicio" class="block text-sm font-medium text-gray-700"></label>
+                <input type="time" asp-for="HoraInicio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="HoraInicio" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="FechaFinal" class="block text-sm font-medium text-gray-700"></label>
+                <input type="date" asp-for="FechaFinal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="FechaFinal" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="HoraFinal" class="block text-sm font-medium text-gray-700"></label>
+                <input type="time" asp-for="HoraFinal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="HoraFinal" class="text-red-500"></span>
+            </div>
+            <div class="flex justify-between">
+                <button type="button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400" onclick="prevStep(1)">Atrás</button>
+                <button type="button" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700" onclick="nextStep(3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Ubicación y Capacidad -->
+        <div class="step hidden" id="step-3">
+            <div class="mb-4">
+                <label asp-for="Ubicacion" class="block text-sm font-medium text-gray-700"></label>
+                <input asp-for="Ubicacion" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" />
+                <span asp-validation-for="Ubicacion" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Capacidad" class="block text-sm font-medium text-gray-700"></label>
+                <input type="number" asp-for="Capacidad" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" value="0" />
+                <span asp-validation-for="Capacidad" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Tipo" class="block text-sm font-medium text-gray-700"></label>
+                <select asp-for="Tipo" asp-items="@(new SelectList(tipos, "Value", "Text"))" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"></select>
+                <span asp-validation-for="Tipo" class="text-red-500"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Modalidad" class="block text-sm font-medium text-gray-700"></label>
+                <select asp-for="Modalidad" asp-items="@(new SelectList(modalidades, "Value", "Text"))" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"></select>
+                <span asp-validation-for="Modalidad" class="text-red-500"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <button type="button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400" onclick="prevStep(2)">Atrás</button>
+                <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-700">Crear Evento</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.step').forEach(stepDiv => stepDiv.classList.add('hidden'));
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+        }
+
+        function prevStep(step) {
+            document.querySelectorAll('.step').forEach(stepDiv => stepDiv.classList.add('hidden'));
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+        }
+    </script>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

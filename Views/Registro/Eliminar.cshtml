@@ -1,0 +1,50 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Registro
+@{
+    ViewData["Title"] = "Eliminar Registro";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Eliminar Registro</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Index" class="btn btn-secondary">
+                Volver a la lista
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3>¿Está seguro de que desea eliminar este registro?</h3>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.IdUsuario)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdUsuario)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.IdEvento)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.IdEvento)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.FechaRegistro)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.FechaRegistro)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Estado)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Estado)</dd>
+
+                        <dt class="col-sm-4">@Html.DisplayNameFor(model => model.CodigoQrAsistencia)</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.CodigoQrAsistencia)</dd>
+                    </dl>
+
+                    <form asp-action="Eliminar" class="mt-3">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group text-end">
+                            <input type="submit" value="Eliminar" class="btn btn-danger" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

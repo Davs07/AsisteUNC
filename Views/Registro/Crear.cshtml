@@ -1,0 +1,70 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Registro
+
+@{
+    ViewData["Title"] = "Crear Registro";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Crear Registro</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Index" class="btn btn-secondary">
+                Volver a la lista
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Crear">
+                        <div class="form-group mb-3">
+                            <label asp-for="IdUsuario" class="form-label"></label>
+                            <input asp-for="IdUsuario" class="form-control" />
+                            <span asp-validation-for="IdUsuario" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="IdEvento" class="form-label"></label>
+                            <input asp-for="IdEvento" class="form-control" />
+                            <span asp-validation-for="IdEvento" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="FechaRegistro" class="form-label"></label>
+                            <input asp-for="FechaRegistro" class="form-control" />
+                            <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Estado" class="form-label"></label>
+                            <select asp-for="Estado" class="form-control">
+                                <option value="">Seleccione un estado</option>
+                                <option value="Registrado">Registrado</option>
+                                <!-- Agregar más opciones si es necesario -->
+                            </select>
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="CodigoQrAsistencia" class="form-label"></label>
+                            <input asp-for="CodigoQrAsistencia" class="form-control" />
+                            <span asp-validation-for="CodigoQrAsistencia" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-end">
+                            <input type="submit" value="Crear" class="btn btn-success" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+

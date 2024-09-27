@@ -1,0 +1,48 @@
+﻿@using AsitenciaUNC_attemp_2.ViewModels;
+@model LoginVM
+
+@{
+	ViewData["Title"] = "Inicia Sesión en AsisteUNC";
+}
+
+<div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+	<h1 class="text-2xl font-bold text-primary mb-6">Iniciar Sesión</h1>
+	<p class="text-gray-600 mb-6">
+		Ingresa tu email y contraseña para iniciar
+	</p>
+
+	<form asp-action="InicioSesion" asp-controller="Auth" method="POST">
+		<div class="mb-4">
+			<label asp-for="Email" class="block text-sm font-medium text-primary mb-1">Correo*</label>
+			<input asp-for="Email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="correo@ejemplo.com" />
+			<span asp-validation-for="Email" class="text-red-500"></span>
+		</div>
+
+		<div class="mb-6">
+			<label asp-for="Contraseña" class="block text-sm font-medium text-primary mb-1">Contraseña*</label>
+			<div class="relative">
+				<input asp-for="Contraseña" type="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500" placeholder="Min. 8 caracteres" />
+				<i class="bi bi-eye absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+			</div>
+			<span asp-validation-for="Contraseña" class="text-red-500"></span>
+		</div>
+
+		<div class="mb-4">
+			<input asp-for="RememberMe" type="checkbox" class="mr-2 leading-tight">
+			<label asp-for="RememberMe" class="text-sm text-primary">Recordarme</label>
+		</div>
+
+		<button type="submit" class="w-full bg-secondary text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+			Iniciar
+		</button>
+	</form>
+
+	<p class="mt-4 text-sm text-center">
+		¿Aún no te haz registrado?
+		<a asp-action="Registro" asp-controller="Auth" class="text-primary hover:underline ml-1">Registrarse</a>
+	</p>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

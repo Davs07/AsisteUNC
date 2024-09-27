@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AsitenciaUNC_attemp_2.props" />
+</Project>

@@ -1,0 +1,127 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Evento
+@{
+    ViewData["Title"] = "Editar: "+Model.Titulo;
+    var d = DateTime.Now;   
+}
+
+<form method="post" asp-action="Editar" class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <input type="hidden" asp-for="Id" />
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+        <div class="form-group row">
+            <h2 class="text-2xl font-bold text-blue-600 pl-3">Editar Evento</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Titulo" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="Titulo" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Titulo" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Descripcion" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="Descripcion" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Descripcion" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="FechaInicio" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="date" asp-for="FechaInicio" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="FechaInicio" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="HoraInicio" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="time" asp-for="HoraInicio" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="HoraInicio" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="FechaFinal" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="date" asp-for="FechaFinal" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="FechaFinal" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="HoraFinal" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="time" asp-for="HoraFinal" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="HoraFinal" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Ubicacion" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="Ubicacion" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Ubicacion" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Capacidad" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="number" asp-for="Capacidad" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="0" />
+                    <span asp-validation-for="Capacidad" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Tipo" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="Tipo" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Tipo" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Modalidad" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="Modalidad" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Modalidad" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="CreadoEn" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="date" asp-for="CreadoEn" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="CreadoEn" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="ActualizadoEn" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="datetime" asp-for="ActualizadoEn" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="@d" disabled />
+                    <span asp-validation-for="ActualizadoEn" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="IdOrganizador" class="block text-gray-700 font-bold mb-2"></label>
+                    <input type="number" asp-for="IdOrganizador" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="0" />
+                    <span asp-validation-for="IdOrganizador" class="text-red-500"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="QRInvitacion" class="block text-gray-700 font-bold mb-2"></label>
+                    <input asp-for="QRInvitacion" class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="QRInvitacion" class="text-red-500"></span>
+                </div>
+            </div>
+            <br />
+            <div class="flex justify-end space-x-2">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Actualizar</button>
+                <a asp-controller="Evento" asp-action="Index" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@*Validación del lado del cliente*@
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

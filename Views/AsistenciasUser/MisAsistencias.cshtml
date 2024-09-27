@@ -1,0 +1,21 @@
+﻿<!-- Views/Asistencias/MisAsistencias.cshtml -->
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-primary mb-4">Mis Asistencias</h1>
+    <table class="w-full table-auto">
+        <thead>
+            <tr class="bg-secondary text-white">
+                <th class="px-4 py-2">Evento</th>
+                <th class="px-4 py-2">Fecha de Entrada</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var asistencia in Model)
+            {
+                <tr class="bg-white border-b">
+                    <td class="px-4 py-2">@asistencia.Registro.Evento.Nombre</td>
+                    <td class="px-4 py-2">@asistencia.HoraEntrada.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,31 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Evento
+
+@{
+    ViewData["Title"] = "Detalles del Evento";
+}
+
+<div class="blog-card spring-fever">
+    <div class="title-content" style="margin-top: 30px;">
+        <h3>@Model.Titulo</h3>
+        <hr />
+        <div class="intro">@Model.Descripcion</div>
+    </div><!-- /.title-content -->
+    <div class="card-info">
+        <p>Fecha de Inicio: @Model.FechaInicio?.ToString("dd/MM/yyyy")</p>
+        <p>Hora de Inicio: @Model.HoraInicio</p>
+        <p>Fecha Final: @Model.FechaFinal?.ToString("dd/MM/yyyy")</p>
+        <p>Hora Final: @Model.HoraFinal</p>
+        <p>Ubicación: @Model.Ubicacion</p>
+        <p>Tipo: @Model.Tipo</p>
+        <p>Modalidad: @Model.Modalidad</p>
+    </div><!-- /.card-info -->
+    <div class="utility-info">
+        <ul class="utility-list">
+            <li class="users"><i class="fas fa-users">  @Model.Capacidad</i></li>
+            <li class="date">@Model.CreadoEn.ToString("dd/MM/yyyy")</li>
+        </ul>
+    </div><!-- /.utility-info -->
+    <!-- overlays -->
+    <div class="gradient-overlay"></div>
+    <div class="color-overlay"></div>
+</div><!-- /.blog-card -->

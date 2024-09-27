@@ -1,0 +1,75 @@
+﻿@model IEnumerable<AsitenciaUNC_attemp_2.Models.Evento>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="max-w-[1280px] mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div class="flex justify-between items-center pt-4">
+        <h2 class="text-2xl font-bold text-primary">Lista de Eventos</h2>
+        <a asp-controller="Evento" asp-action="Crear" class="bg-secondary text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+            Nueva Evento
+        </a>
+    </div>
+    <br />
+    <form asp-controller="Evento" asp-action="Index" method="get" class="mb-3">
+        <div class="flex">
+            <input type="text" class="form-control flex-grow px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Buscar por título" name="searchString" value="@ViewData["CurrentFilter"]" />
+            <button class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 ml-2" type="submit">Buscar</button>
+        </div>
+    </form>
+    @if (Model.Count() > 0)
+    {
+        <table class="min-w-full bg-white border border-gray-200 rounded-md shadow-sm">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="py-2 px-4">Título del evento</th>
+                    <th class="py-2 px-4">Inicio</th>
+                    <th class="py-2 px-4">Final</th>
+                    <th class="py-2 px-4">Tipo</th>
+                    <th class="py-2 px-4">Modalidad</th>
+                    <th class="py-2 px-4">Ubicación</th>
+                    <th class="py-2 px-4">Capacidad</th>
+                    <th class="py-2 px-4">Acciones</th>
+                    <th class="py-2 px-4">Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr class="border-t border-gray-200">
+                        <td class="py-2 px-4">@items.Titulo</td>
+                        <td class="py-2 px-4">@items.FechaInicio?.ToShortDateString()</td>
+                        <td class="py-2 px-4">@items.FechaFinal?.ToShortDateString()</td>
+                        <td class="py-2 px-4">@items.Tipo</td>
+                        <td class="py-2 px-4">@items.Modalidad</td>
+                        <td class="py-2 px-4">@items.Ubicacion</td>
+                        <td class="py-2 px-4">@items.Capacidad</td>
+                        <td class="py-2 px-4">
+                            <a asp-controller="Evento" asp-action="Editar" asp-route-id="@items.Id" class="bg-yellow-500 text-white py-1 px-3 rounded-md hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a asp-controller="Evento" asp-action="Eliminar" asp-route-id="@items.Id" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                        <td class="py-2 px-4">
+                            <a asp-controller="Evento" asp-action="VerDetalles" asp-route-id="@items.Id" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                Ver Detalles
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+            No hay registros de Categoría
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}

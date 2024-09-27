@@ -1,0 +1,46 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Evento
+
+@{
+    ViewData["Title"] = "Eliminar Evento";
+}
+
+<h1>Eliminar Evento</h1>
+
+<h3>¿Estás seguro de que deseas eliminar este evento?</h3>
+<div>
+    <h4>@Model.Titulo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Descripción
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Descripcion
+        </dd>
+        <dt class="col-sm-2">
+            Fecha de Inicio
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FechaInicio?.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-2">
+            Fecha de Finalización
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FechaFinal?.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class="col-sm-2">
+            Ubicación
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Ubicacion
+        </dd>
+    </dl>
+
+    <form asp-action="ConfirmarEliminar" asp-controller="EventosUser" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Usuario
+<!-- Views/PerfilUser/Editar.cshtml -->
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-primary mb-4">Editar Perfil</h1>
+
+    <form asp-action="Editar" method="post" class="bg-white shadow-md rounded p-4">
+        <input asp-for="Id" type="hidden" />
+
+        <div class="mb-4">
+            <label asp-for="Nombre" class="block text-secondary">Nombre</label>
+            <input asp-for="Nombre" class="border border-gray-300 rounded p-2 w-full" />
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Apellido" class="block text-secondary">Apellido</label>
+            <input asp-for="Apellido" class="border border-gray-300 rounded p-2 w-full" />
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="CorreoElectronico" class="block text-secondary">Correo Electrónico</label>
+            <input asp-for="CorreoElectronico" class="border border-gray-300 rounded p-2 w-full" />
+        </div>
+
+        <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded">
+            Guardar Cambios
+        </button>
+    </form>
+</div>

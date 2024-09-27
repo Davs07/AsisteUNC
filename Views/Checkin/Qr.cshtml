@@ -1,0 +1,9 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Código QR de asistencia";
+}
+
+<div class="text-center grid place-content-center h-full">
+    @* <h1 class="display-4">Código QR</h1> *@
+    <img alt="Embedded QR Code" class="img-responsive" src="data:image/png;base64,@Model" style="max-width: 500px; max-height: 500px;" />
+</div>

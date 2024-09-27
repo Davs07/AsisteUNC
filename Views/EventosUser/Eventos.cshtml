@@ -1,0 +1,31 @@
+﻿@model List<AsitenciaUNC_attemp_2.Models.Evento>
+
+<!-- Views/EventosUser/Index.cshtml -->
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl font-semibold text-gray-800 mb-8">Mis Eventos</h1>
+
+    <!-- Grid layout para los eventos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var evento in Model)
+        {
+            <div class="border border-gray-200 rounded-xl shadow-lg p-6 bg-gray-50 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2">
+                <!-- Nombre del evento -->
+                <h2 class="text-2xl font-semibold text-gray-700 mb-3">@evento.Titulo</h2>
+
+                <!-- Fecha del evento -->
+                <p class="text-gray-500 text-sm mb-5">@evento.FechaInicio?.ToString("MMMM dd, yyyy")</p>
+
+                <!-- Botón de acciones -->
+                <div class="flex justify-between items-center">
+                    <a href="@Url.Action("Detalles", "EventosUser", new { id = evento.Id })"
+                       class="bg-indigo-600 hover:bg-indigo-500 text-white py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                        Ver detalles
+                    </a>
+                    <a asp-controller="EventosUser" asp-action="Eliminar" asp-route-id="@evento.Id" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-400">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

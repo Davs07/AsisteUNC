@@ -1,0 +1,86 @@
+﻿@model AsitenciaUNC_attemp_2.ViewModels.IndexVM
+
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl font-semibold text-primary mb-6">Eventos Disponibles</h1>
+    <form method="get" asp-action="Index" asp-controller="EventosUser">
+        <div class="form-group input-group me-3">
+            <input type="text" name="buscar" value="@Model.Buscar" class="form-control" placeholder="Ingrese su búsqueda" />
+            <button type="submit" class="btn btn-outline-primary">Buscar</button>
+            <a asp-action="Index" class="btn btn-outline-dark">
+                <i class="fa-solid fa-rotate-left"></i>&nbsp;Restablecer
+            </a>
+        </div>
+    </form>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var evento in Model.Eventos)
+        {
+            <div class="border border-gray-200 rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-primary text-white p-4 rounded-t-lg">
+                    <h2 class="text-xl font-bold">@evento.Titulo</h2>
+                </div>
+                <div class="p-4">
+                    <p class="text-gray-700"><strong>Fecha:</strong> @evento.FechaInicio?.ToString("MMMM dd, yyyy")</p>
+                    <p class="text-gray-700"><strong>Organizador:</strong> @evento.IdOrganizador</p>
+                </div>
+                <div class="p-4 border-t border-gray-200 flex justify-between gap-2">
+                    <a href="@Url.Action("Detalles", "EventosUser", new { id = evento.Id })"
+                       class="bg-primary hover:bg-secondary text-white py-2 px-4 rounded transition-colors duration-300">
+                        Ver detalles
+                    </a>
+                    <div id="registro-@evento.Id" class="flex gap-2">
+                        <!-- Botón dinámico (se actualizará por JavaScript) -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        @foreach (var evento in Model.Eventos)
+        {
+            <text>
+                    fetch(`/EventosUser/EstaRegistrado?eventoId=@evento.Id`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const container = document.getElementById("registro-@evento.Id");
+                            if (data) {
+                                container.innerHTML = `
+                                                                        <form asp-action="EliminarRegistroEvento" asp-controller="EventosUser" method="post" class="inline">
+                                                                            <input type="hidden" name="id" value="@evento.Id" />
+                                                                            <button type="submit" class="bg-rose-500 hover:bg-rose-700 text-white py-1 px-3 rounded transition-colors duration-300">Eliminar registro</button>
+                                                                        </form>
+                                                                        <form method="get" asp-action="VerQr" asp-controller="EventosUser">
+                                                                            <input type="hidden" name="idEvento" value="@evento.Id" />
+                                                                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white py-1 px-3 rounded transition-colors duration-300">Ver código QR</button>
+                                                                        </form>`;
+                            } else {
+                                container.innerHTML = `
+                                                                        <form asp-action="RegistrarseEvento" asp-controller="EventosUser" method="post" class="inline">
+                                                                            <input type="hidden" name="id" value="@evento.Id" />
+                                                                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white py-1 px-3 rounded transition-colors duration-300">
+                                                                                Registrarse en el evento
+                                                                            </button>
+                                                                        </form>`;
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+            </text>
+        }
+                        });
+    </script>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.TotalPaginas; i++)
+        {
+            <li class="page-item @(i == Model.PaginaActual ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-pagina="@i" asp-route-buscar="@Model.Buscar">@i</a>
+            </li>
+        }
+    </ul>
+</nav>

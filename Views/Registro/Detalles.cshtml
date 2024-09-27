@@ -1,0 +1,47 @@
+﻿@model AsitenciaUNC_attemp_2.Models.Registro
+
+<h2>Detalles del Registro</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.IdUsuario)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.IdUsuario)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.IdEvento)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.IdEvento)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.FechaRegistro)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Estado)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.CodigoQrAsistencia)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.CodigoQrAsistencia)
+    </dd>
+</dl>
+
+<div>
+    <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>
