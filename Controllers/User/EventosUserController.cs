@@ -37,7 +37,7 @@ public class EventosUserController : Controller
     public async Task<IActionResult> Index(string buscar, int pagina = 1)
     {
         int pageSize = 10; // Número de elementos por página
-        var query = _db.Eventos.AsQueryable();
+        var query = _db.Eventos.Include(e => e.Organizador).AsQueryable();
 
         if (!string.IsNullOrEmpty(buscar))
         {
@@ -327,6 +327,8 @@ public class EventosUserController : Controller
         {
             return NotFound();
         }
+
+     
 
         // Elimina los registros asociados
         _db.Registros.RemoveRange(evento.Registros);
