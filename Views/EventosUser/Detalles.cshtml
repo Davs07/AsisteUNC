@@ -1,11 +1,59 @@
-﻿@model AsitenciaUNC_attemp_2.Models.Evento
+﻿@model AsitenciaUNC_attemp_2.ViewModels.EventDetailsVM
 <!-- Views/EventosUser/Detalles.cshtml -->
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold text-primary mb-4">@Model.Titulo</h1>
-    <p><strong>Fecha:</strong> @Model.FechaInicio?.ToShortDateString()</p>
-    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <h1 class="text-3xl font-bold text-primary mb-4">@Model.Evento.Titulo</h1>
+    <p><strong>Fecha:</strong> @Model.Evento.FechaInicio?.ToShortDateString()</p>
+    <p><strong>Descripción:</strong> @Model.Evento.Descripcion</p>
     <form asp-action="CheckIn" method="post">
-        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="hidden" name="id" value="@Model.Evento.Id" />
         <button type="submit" class="mt-4 bg-primary hover:bg-secondary text-white py-2 px-4 rounded">Hacer Check-In</button>
     </form>
+</div>
+
+<!--Tablas de los Registrados-->
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold text-primary mb-4">Registrados</h2>
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Nombre</th>
+                <th class="px-4 py-2">Apellido</th>
+                <th class="px-4 py-2">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model.Registrados)
+            {
+                <tr>
+                    <td class="border px-4 py-2">@registro.Usuario.Nombre</td>
+                    <td class="border px-4 py-2">@registro.Usuario.Apellido</td>
+                    <td class="border px-4 py-2">@registro.Usuario.CorreoElectronico</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!--Todos los asistentes-->
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold text-primary mb-4">Asistentes</h2>
+    <table class="table-auto w-full">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Nombre</th>
+                <th class="px-4 py-2">Apellido</th>
+                <th class="px-4 py-2">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model.Asistentes)
+            {
+                <tr>
+                    <td class="border px-4 py-2">@registro.Usuario.Nombre</td>
+                    <td class="border px-4 py-2">@registro.Usuario.Apellido</td>
+                    <td class="border px-4 py-2">@registro.Usuario.CorreoElectronico</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

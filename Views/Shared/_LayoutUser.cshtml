@@ -95,7 +95,6 @@
 			<!-- Top Bar -->
 			<header class="bg-white p-4 flex justify-between items-center shadow-lg">
 				<!-- Search bar -->
-				
 				<!-- User Profile and Notifications -->
 				<div class="flex space-x-6 items-center">
 					<!-- Dark mode / light mode toggle -->
@@ -106,13 +105,23 @@
 					</button>
 
 					<!-- Notification Icon -->
-					<button class="relative text-gray-600 hover:text-purple-500 transition-colors duration-200 ease-in-out focus:outline-none">
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M12 19a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2zM18.364 17.778A2 2 0 0 0 20 16V9a6 6 0 1 0-12 0v7a2 2 0 0 0 1.636 1.778M5 16v1a3 3 0 0 0 6 0v-1" />
-						</svg>
-						<!-- Notification dot -->
-						<span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
-					</button>
+					<div class="relative">
+						<button id="notificationButton" class="relative text-gray-600 hover:text-purple-500 transition-colors duration-200 ease-in-out focus:outline-none">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M12 19a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2zM18.364 17.778A2 2 0 0 0 20 16V9a6 6 0 1 0-12 0v7a2 2 0 0 0 1.636 1.778M5 16v1a3 3 0 0 0 6 0v-1" />
+							</svg>
+							<!-- Notification dot -->
+							<span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+						</button>
+						<!-- Dropdown Menu -->
+						<div id="notificationMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg">
+							<ul>
+								<li class="px-4 py-2 border-b border-gray-200">Notificación 1</li>
+								<li class="px-4 py-2 border-b border-gray-200">Notificación 2</li>
+								<li class="px-4 py-2">Notificación 3</li>
+							</ul>
+						</div>
+					</div>
 
 					<!-- Profile dropdown or login partial -->
 					<div class="flex items-center space-x-3">
@@ -139,3 +148,11 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+<script>
+	document.getElementById('notificationButton').addEventListener('click', function () {
+		var menu = document.getElementById('notificationMenu');
+		menu.classList.toggle('hidden');
+	});
+</script>

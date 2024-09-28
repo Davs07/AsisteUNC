@@ -80,11 +80,28 @@ public class EventosUserController : Controller
             .Include(e => e.Organizador) // Incluye la relación con el organizador
             .FirstOrDefaultAsync(e => e.Id == id);
 
+        var registrados = await _db.Registros
+            .Include(r => r.Usuario) // Incluye la relación con el usuario
+            .Where(r => r.IdEvento == id)
+            .ToListAsync();
+
+        var asistentes = await _db.Registros
+            .Include(r => r.Usuario) // Incluye la relación con el usuario
+            .Where(r => r.IdEvento == id && r.Estado == EstadoRegistro.Asistio)
+            .ToListAsync();
+
         if (evento == null)
         {
             return NotFound();
         }
-        return View(evento);
+        var viewModel = new EventDetailsVM
+        {
+            Evento = evento,
+            Registrados = registrados,
+            Asistentes = asistentes
+        };
+
+        return View(viewModel);
     }
 
     // Crear: Carga el formulario de creación de evento
