@@ -32,7 +32,7 @@ namespace AsitenciaUNC_attemp_2.Controllers
 
 				if (result.Succeeded)
 				{
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "EventosUser");
 				}
 
 				ModelState.AddModelError("", "Invalid login attempt.");
@@ -63,7 +63,7 @@ namespace AsitenciaUNC_attemp_2.Controllers
 				{
 					await _signInManager.SignInAsync(user, false);
 
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Index", "EventosUser");
 				}
 				foreach (var error in result.Errors)
 				{

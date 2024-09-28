@@ -7,8 +7,9 @@
 	{
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				@User.Identity!.Name!
+				@User.Identity!.Name
 			</a>
+			<a asp-action="Index" asp-asp-controller="EventosUser"></a>
 			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<li>
 					<a class="dropdown-item" asp-action="CerrarSesion" asp-controller="Auth">

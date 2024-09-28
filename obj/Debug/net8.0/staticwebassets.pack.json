@@ -41,6 +41,18 @@
       "PackagePath": "staticwebassets\\img\\Fondo6.jpg"
     },
     {
+      "Id": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\wwwroot\\img\\asisteunc.png",
+      "PackagePath": "staticwebassets\\img\\asisteunc.png"
+    },
+    {
+      "Id": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\wwwroot\\img\\asisteunc1.png",
+      "PackagePath": "staticwebassets\\img\\asisteunc1.png"
+    },
+    {
+      "Id": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\wwwroot\\img\\asisteunc2.png",
+      "PackagePath": "staticwebassets\\img\\asisteunc2.png"
+    },
+    {
       "Id": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

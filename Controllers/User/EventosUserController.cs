@@ -23,7 +23,7 @@ public class EventosUserController : Controller
         _userManager = userManager;
     }
 
-    string url1 = "https://d9e5-190-116-36-68.ngrok-free.app/registrarasistencia/";
+    string url1 = "https://0aa1-179-6-55-191.ngrok-free.app/registrarasistencia/";
 
 
 	// Paginación y búsqueda
