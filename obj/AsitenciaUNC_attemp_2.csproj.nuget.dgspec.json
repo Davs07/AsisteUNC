@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj": {}
+    "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj": {
+    "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
+        "projectUniqueName": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
         "projectName": "AsitenciaUNC_attemp_2",
-        "projectPath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
+        "projectPath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
         "packagesPath": "C:\\Users\\davyr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\obj\\",
+        "outputPath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\davyr\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GGFEh3MoRQlRY9CzXvLq/EvoOERVho5fhsBjh6idm3Oghd4G49zAQL+wI3cqZmqHCzMBrxnLNxfYo+ba7aUuwg==",
+  "dgSpecHash": "/Cpt5nLLmEtdttxlIaLPlpadxGAL7gNLe0S9UFuktBfr18N5xNn1/oHKKl0cI7L5bS1SeSbE/YobrI7TrLmlhw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
+  "projectFilePath": "C:\\Users\\davyr\\OneDrive\\Escritorio\\ALL_CODE_PROJECTS\\UNC_PROJECTS\\AsisteUNC-main - copia\\AsitenciaUNC_attemp_2\\AsitenciaUNC_attemp_2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\davyr\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\davyr\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

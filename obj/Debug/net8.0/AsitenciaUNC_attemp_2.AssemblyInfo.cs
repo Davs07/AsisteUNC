@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AsitenciaUNC_attemp_2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+586cbcc16bc7823c537a9f032882b549287a9405")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7f8d4913c2e34ca5a3f0a6738f0471cd80d89e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AsitenciaUNC_attemp_2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AsitenciaUNC_attemp_2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

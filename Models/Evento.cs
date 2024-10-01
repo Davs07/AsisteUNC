@@ -47,11 +47,10 @@ namespace AsitenciaUNC_attemp_2.Models
         [ForeignKey("IdOrganizador")]
         public virtual Usuario Organizador { get; set; } // Propiedad de navegación
 
-
 		public string? QRInvitacion { get; set; }
-
 
 		// Relación con Registro
 		public List<Registro> Registros { get; set; } = new List<Registro>();
+        
 	}
 }

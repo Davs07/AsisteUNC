@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using QRCoder;
 using static System.Net.WebRequestMethods;
 using AsitenciaUNC_attemp_2.ViewModels;
+using AsitenciaUNC_attemp_2.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 [Authorize]
 public class EventosUserController : Controller
@@ -33,32 +35,58 @@ public class EventosUserController : Controller
 	[BindProperty(SupportsGet = true)]
 	public string TerminoBusqueda { get; set; }
 
-    // Index: Muestra la lista de eventos
-    public async Task<IActionResult> Index(string buscar, int pagina = 1)
-    {
-        int pageSize = 10; // Número de elementos por página
+	[BindProperty(SupportsGet = true)]
+	public TipoEvento tipoEvento { get; set; }
+
+	// Index: Muestra la lista de eventos
+	public async Task<IActionResult> Index(string buscar, TipoEvento? tipoEvento, DateTime? fechaInicio, DateTime? fechaFin, int pagina = 1)
+
+	{
+		int pageSize = 4; // Número de elementos por página
         var query = _db.Eventos.Include(e => e.Organizador).AsQueryable();
 
         if (!string.IsNullOrEmpty(buscar))
         {
-            query = query.Where(e => e.Titulo.Contains(buscar));
+            query = query.Where(e => e.Titulo.Contains(buscar) || e.Descripcion.Contains(buscar) || e.Ubicacion.Contains(buscar) || e.Organizador.Nombre.Contains(buscar));
         }
+            
+		// Filtro por tipo de evento si se selecciona uno
+		if (tipoEvento.HasValue)
+		{
+			query = query.Where(e => e.Tipo == tipoEvento.Value);
+		}
 
-        var totalRegistros = await query.CountAsync();
+		if (fechaInicio.HasValue)
+		{
+			var fechaInicioDateOnly = DateOnly.FromDateTime(fechaInicio.Value);
+			query = query.Where(e => e.FechaInicio >= fechaInicioDateOnly);
+		}
+
+		if (fechaFin.HasValue)
+		{
+			var fechaFinDateOnly = DateOnly.FromDateTime(fechaFin.Value);
+			query = query.Where(e => e.FechaInicio <= fechaFinDateOnly);
+		}
+
+		var totalRegistros = await query.CountAsync();
         var eventos = await query
             .Skip((pagina - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        var viewModel = new IndexVM
-        {
-            Eventos = eventos,
-            PaginaActual = pagina,
-            TotalPaginas = (int)Math.Ceiling(totalRegistros / (double)pageSize),
-            Buscar = buscar
-        };
+		var viewModel = new IndexVM
+		{
+			Eventos = eventos,
+			PaginaActual = pagina,
+			TotalPaginas = (int)Math.Ceiling(totalRegistros / (double)pageSize),
+			Buscar = buscar,
+			TipoEvento = tipoEvento,
+			TiposEventos = new SelectList(Enum.GetValues(typeof(TipoEvento))), // Mejorando el dropdown con SelectList
+			FechaInicio = fechaInicio,
+			FechaFin = fechaFin
+		};
 
-        return View(viewModel);
+		return View(viewModel);
     }
 
     // Index: Muestra la lista de eventos
@@ -94,6 +122,7 @@ public class EventosUserController : Controller
         {
             return NotFound();
         }
+
         var viewModel = new EventDetailsVM
         {
             Evento = evento,
@@ -344,8 +373,6 @@ public class EventosUserController : Controller
         {
             return NotFound();
         }
-
-     
 
         // Elimina los registros asociados
         _db.Registros.RemoveRange(evento.Registros);

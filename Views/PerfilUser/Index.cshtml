@@ -1,16 +1,73 @@
 ﻿@model AsitenciaUNC_attemp_2.Models.Usuario
 
-<!-- Views/PerfilUser/Index.cshtml -->
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold text-primary mb-4">Perfil de Usuario</h1>
+    <!-- Encabezado del perfil -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6 flex flex-col md:flex-row items-center justify-between">
+        <!-- Foto de perfil -->
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
+            <img src="/images/default-profile.png" alt="Foto de perfil" class="object-cover w-full h-full">
+        </div>
 
-    <div class="bg-white shadow-md rounded p-4">
-        <p><span class="font-bold">Nombre:</span> @Model.Nombre</p>
-        <p><span class="font-bold">Apellido:</span> @Model.Apellido</p>
-        <p><span class="font-bold">Correo Electrónico:</span> @Model.CorreoElectronico</p>
-        <a href="@Url.Action("Editar", "PerfilUser")"
-           class="mt-4 inline-block bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded">
-            Editar Perfil
-        </a>
+        <!-- Información del usuario -->
+        <div class="md:ml-6 text-center md:text-left mt-4 md:mt-0">
+            <h1 class="text-4xl font-bold text-gray-800">@Model.Nombre @Model.Apellido</h1>
+            <p class="text-gray-500">@Model.CorreoElectronico</p>
+            <p class="text-sm text-gray-400">Miembro desde @Model.CreadoEn.ToString("MMMM yyyy")</p>
+        </div>
+
+        <!-- Botón Editar Perfil -->
+        <div class="mt-4 md:mt-0">
+            <a href="@Url.Action("Editar", "PerfilUser")"
+               class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                Editar Perfil
+            </a>
+        </div>
+    </div>
+
+    <!-- Sección Bio -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Biografía</h2>
+        <p class="text-gray-700">Aquí puedes agregar una breve descripción de ti mismo. Podría incluir intereses, información de contacto o cualquier cosa que te gustaría compartir.</p>
+    </div>
+
+    <!-- Actividades Recientes -->
+    <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Actividades Recientes</h2>
+        <ul class="space-y-4">
+            @foreach (var registro in Model.Registros)
+            {
+                <li class="flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-gray-700">Asististe a: @registro.Evento.Titulo</p>
+                        <p class="text-gray-500 text-sm">@registro.Evento.FechaInicio?.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                    <a href="@Url.Action("Detalles", "EventosUser", new { id = registro.Evento.Id })"
+                       class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                        Ver Evento
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Notificaciones -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Notificaciones</h2>
+        @* <ul class="space-y-4">
+            @if (Model.Notificaciones.Any())
+            {
+                @foreach (var notificacion in Model.Notificaciones)
+                {
+                    <li class="p-4 bg-gray-100 rounded-lg flex justify-between items-center">
+                        <p class="text-gray-700">@notificacion.Mensaje</p>
+                        <span class="text-xs text-gray-400">@notificacion.ToString("MMMM dd, yyyy")</span> 
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="p-4 bg-gray-100 rounded-lg text-gray-500">No tienes notificaciones.</li>
+            }
+        </ul> *@
     </div>
 </div>

@@ -30,7 +30,17 @@ namespace AsitenciaUNC_attemp_2.Controllers.User
             return View(usuarioActual);
         }
 
-        [HttpPost]
+		public async Task<IActionResult> Editar()
+		{
+			var usuarioActual = await _userManager.GetUserAsync(User); // Obtener el usuario autenticado
+			if (usuarioActual == null)
+			{
+				return RedirectToAction("InicioSesion", "Auth"); // Redirigir a inicio de sesión si no está autenticado
+			}
+			return View(usuarioActual);
+		}
+
+		[HttpPost]
         public async Task<IActionResult> Editar(Usuario model)
         {
             var usuario = await _userManager.FindByIdAsync(model.Id); // Usar UserManager para buscar el usuario
